@@ -1,0 +1,64 @@
+git config --global user.name "Emilia Wiewiora"
+git config --global user.email "wiewiora.emilia@gmail.com"
+
+cd ~
+rm -rf git-desde-GitBash
+git clone https://github.com/emiliawiew/git-desde-GitBash.git
+cd git-desde-GitBash
+
+# PRIMER COMMIT
+
+echo "Primer archivo de prueba" > info.txt
+git add info.txt
+git commit -m "Primer commit: crear archivo info.txt"
+git push origin main
+
+# SEGUNDO COMMIT
+
+echo "Segunda línea: cambios en main" >> info.txt
+git add info.txt
+git commit -m "Segundo commit: añadir nueva línea en info.txt"
+git push origin main
+
+# TERCER COMMIT - RAMA2
+
+git checkout -b rama2
+echo "Cambios desde rama2" >> info.txt
+git add info.txt
+git commit -m "Tercer commit: cambios en rama2"
+git push origin rama2
+
+# CUARTO COMMIT - RAMA3
+
+git checkout -b rama3
+echo "Cambios desde rama3" >> info.txt
+git add info.txt
+git commit -m "Cuarto commit: cambios en rama3"
+git push origin rama3
+
+# MERGE DE RAMAS
+
+git checkout main
+git merge rama2
+git merge rama3
+git push origin main
+
+# QUINTO COMMIT
+
+echo "Último cambio en main" >> info.txt
+git add info.txt
+git commit -m "Quinto commit: cambio final en main"
+git push origin main
+
+# GUARDAR LOG Y HISTORIAL
+
+git log --decorate > git_log_Emilia.txt
+echo "Repositorio GitHub: https://github.com/emiliawiew/git-desde-GitBash" >> git_log_Emilia.txt
+
+
+git branch -d rama2
+git branch -d rama3
+git push origin --delete rama2
+git push origin --delete rama3
+
+
